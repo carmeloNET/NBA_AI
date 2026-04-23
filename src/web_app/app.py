@@ -120,7 +120,7 @@ def create_app(predictor):
                 game_data = get_games_for_date(
                     query_date_str,
                     predictor=predictor,
-                    update_predictions=True,
+                    update_predictions=False,
                 )
                 log_context = query_date_str
 
@@ -139,7 +139,7 @@ def create_app(predictor):
                 game_data = get_games(
                     game_ids,
                     predictor=predictor,
-                    update_predictions=True,
+                    update_predictions=False,
                 )
                 log_context = (
                     game_ids[0] if len(game_ids) == 1 else f"{len(game_ids)} games"

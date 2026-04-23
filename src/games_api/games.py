@@ -198,9 +198,10 @@ def get_games(
         raise ValueError(f"Invalid predictor: {predictor}")
 
     # Update the database
-    seasons = set(game_id_to_season(game_id) for game_id in game_ids)
-    for season in seasons:
-        update_database(season, predictor, DB_PATH)
+    if update_predictions:
+        seasons = set(game_id_to_season(game_id) for game_id in game_ids)
+        for season in seasons:
+            update_database(season, predictor, DB_PATH)
 
     # Use context manager to connect to the database
     with sqlite3.connect(DB_PATH) as conn:
